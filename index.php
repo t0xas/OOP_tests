@@ -135,3 +135,4 @@ $test->testCatInstruction($noanimal->getInstance());
 echo "Master changes";
 echo "Master changes 2";
 echo "Anton changes";
+echo "Anton changes 2";
