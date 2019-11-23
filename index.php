@@ -133,3 +133,4 @@ $noanimal = new NoAnimal([1,2,3,4]);
 $test->testCatInstruction($noanimal->getInstance());
 
 echo "Master changes";
+echo "Master changes 2";
