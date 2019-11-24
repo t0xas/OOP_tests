@@ -136,3 +136,4 @@ echo "Master changes";
 echo "Master changes 2";
 echo "Anton changes";
 echo "Anton changes 2";
+echo "Anton пошёл наводить порядок опять";
