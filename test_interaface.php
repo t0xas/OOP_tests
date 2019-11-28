@@ -1,7 +1,8 @@
 <?php
 
-interface Catinstruction {
-    function getInformation():string;
+interface animalInstruction
+{
+    function getInformation(): string;
 }
 
 abstract class animal
@@ -19,31 +20,40 @@ abstract class animal
         $this->ownerName = $ownerName;
     }
 
-    function getWeight():float {
+    function getWeight(): float
+    {
         return $this->weight;
     }
 
-    function getAge():int {
+    function getAge(): int
+    {
         return $this->age;
     }
 
-    function getName():string {
+    function getName(): string
+    {
         return $this->name;
     }
 
-    function getOwnerName():string {
+    function getOwnerName(): string
+    {
         return $this->ownerName;
     }
 
     abstract function getInstance();
 }
-class dog extends animal {
 
-    function getInstance() {
+class dog extends animal
+{
+
+    function getInstance()
+    {
         return $this;
     }
 }
-class bird extends animal {
+
+class bird extends animal
+{
 
     private $wingspan;
 
@@ -53,30 +63,33 @@ class bird extends animal {
         $this->wingspan = $wingspan;
     }
 
-    function getWingspan():float {
+    function getWingspan(): float
+    {
         return $this->wingspan;
     }
-    function getInstance() {
+
+    function getInstance()
+    {
         return $this;
     }
 }
 
-class Cat extends Animal implements Catinstruction {
+class Cat extends Animal implements animalInstruction
+{
 
     function getInstance()
     {
-        // TODO: Implement getInstance() method.
         return $this;
     }
 
     function getInformation(): string
     {
-        // TODO: Implement getInformation() method.
         echo "Кличка:{$this->name}, возраст: {$this->age}, вес: {$this->weight}, хозяин: {$this->ownerName}";
     }
 }
 
-class NoAnimal implements Catinstruction {
+class NoAnimal implements animalInstruction
+{
 
     private $param = array();
 
@@ -98,43 +111,45 @@ class NoAnimal implements Catinstruction {
     }
 }
 
-class test {
-    function testAnimal(Animal $instance) {
+//Тестирую область видимости объектов
+class test
+{
+    function testAnimal(Animal $instance)
+    {
         var_dump($instance);
     }
-    function testBird(Bird $instance){
+
+    function testBird(Bird $instance)
+    {
         var_dump($instance);
     }
-    function testCat(Cat $instance){
+
+    function testCat(Cat $instance)
+    {
         var_dump($instance);
     }
-    function testCatInstruction(Catinstruction $instance){
+
+    function testAnimalInstruction(animalInstruction $instance)
+    {
         var_dump($instance);
     }
 }
 
-$dog = new Dog(21,1000.20, 'Мурзик', 'Игорь Иванович');
-echo $dog->getName();
+$dog = new Dog(21, 1000.20, 'Мурзик', 'Игорь Иванович');
+$dog->getName();
 $birdInstance = $dog->getInstance();
 
-$bird  = new Bird(21,1000.20, 'Попугайка', 'Ира Захарова', 20.02);
-echo $bird->getWingspan();
+$bird = new Bird(21, 1000.20, 'Попугайка', 'Ира Захарова', 20.02);
+$bird->getWingspan();
 $birdInstance = $bird->getInstance();
 
-$cat = new Cat(21,1000.20, 'Жулик', 'Игорь Иванович');
+$cat = new Cat(21, 1000.20, 'Жулик', 'Игорь Иванович');
 
 $test = new Test();
 $test->testAnimal($bird);
 $test->testBird($bird);
 $test->testCat($cat);
-$test->testCatInstruction($cat);
+$test->testAnimalInstruction($cat);
 
-$noanimal = new NoAnimal([1,2,3,4]);
-$test->testCatInstruction($noanimal->getInstance());
-
-echo "Master changes";
-echo "Master changes 2";
-echo "Master changes 3";
-echo "Anton changes";
-echo "Anton changes 2";
-echo "Anton пошёл наводить порядок опять";
+$noanimal = new NoAnimal([1, 2, 3, 4]);
+$test->testAnimalInstruction($noanimal->getInstance());
