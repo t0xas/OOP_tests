@@ -63,3 +63,16 @@ catch (XmlException $e) {
 
 $conf = $conf->getConfig();
 var_dump($conf);
+/*
+object(SimpleXMLElement)#2 (4) {
+  ["server"]=>
+  string(9) "localhost"
+  ["database"]=>
+  string(8) "database"
+  ["user"]=>
+  string(4) "root"
+  ["password"]=>
+  string(4) "root"
+}
+
+ */
