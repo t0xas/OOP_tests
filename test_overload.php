@@ -42,6 +42,15 @@ class test{
         $value++;
         $this->$property = $value;
     }
+
+    function __call($name, $arguments)
+    {
+        // TODO: Implement __call() method.
+    }
+
+    public function getV1(){
+        return $this->v1;
+    }
 }
 
 
